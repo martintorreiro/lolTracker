@@ -1,4 +1,11 @@
-export const Search = ({ setSummonerData, RIOT_KEY }) => {
+import "./index.css";
+
+export const Search = ({
+  setSummonerData,
+  setMatchesOwnData,
+  setMatchesData,
+  RIOT_KEY,
+}) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -9,18 +16,18 @@ export const Search = ({ setSummonerData, RIOT_KEY }) => {
       );
       responseByName = await responseByName.json();
 
-      let responseBySummoner = await fetch(
+      let responseBySummonerId = await fetch(
         `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${responseByName.id}?api_key=${RIOT_KEY}`
       );
-      [responseBySummoner] = await responseBySummoner.json();
+      [responseBySummonerId] = await responseBySummonerId.json();
 
-      let responseMatchs = await fetch(
-        `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${responseByName.puuid}/ids?api_key=${RIOT_KEY}&count=10`
+      let responseMatches = await fetch(
+        `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${responseByName.puuid}/ids?api_key=${RIOT_KEY}&count=15`
       );
-      responseMatchs = await responseMatchs.json();
+      responseMatches = await responseMatches.json();
 
       const matchesResults = await Promise.all(
-        responseMatchs.map(async (match) => {
+        responseMatches.map(async (match) => {
           const res = await fetch(
             `https://europe.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${RIOT_KEY}`
           );
@@ -28,24 +35,36 @@ export const Search = ({ setSummonerData, RIOT_KEY }) => {
           return await res.json();
         })
       );
+      console.log(matchesResults);
+      const matchesSummonersInfo = matchesResults.map(
+        (match) => match.info.participants
+      );
 
-      console.log("-------....-------", responseByName);
-      console.log("--------------", matchesResults);
+      const matchesOwnInfo = matchesSummonersInfo.map((match) => {
+        const [myMatches] = match.filter(
+          (player) => player.summonerId === responseByName.id
+        );
+        return myMatches;
+      });
+
+      console.log(responseBySummonerId);
 
       const resReturn = {
         ...responseByName,
-        ...responseBySummoner,
+        ...responseBySummonerId,
       };
 
-      if (responseBySummoner) {
-        const winRate =
-          ((responseBySummoner.wins + responseBySummoner.losses) *
-            responseBySummoner.wins) /
-          100;
+      if (responseBySummonerId) {
+        const winRate = Math.round(
+          (responseBySummonerId.wins * 100) /
+            (responseBySummonerId.wins + responseBySummonerId.losses)
+        );
         resReturn.winRate = winRate;
       }
 
       setSummonerData(resReturn);
+      setMatchesData(matchesResults);
+      setMatchesOwnData(matchesOwnInfo);
     } catch (error) {
       console.log(error.message);
     }
@@ -53,9 +72,8 @@ export const Search = ({ setSummonerData, RIOT_KEY }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="search">Enter summoner name</label>
-      <input type="search" id="search" name="sarch"></input>
-      <button type="submit">search summoner</button>
+      <input autoFocus type="search" id="search" name="sarch"></input>
+      <button type="submit">ok</button>
     </form>
   );
 };
