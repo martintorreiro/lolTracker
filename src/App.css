@@ -1,0 +1,17 @@
+#root {
+  display: grid;
+  grid-template-rows: 10vh 90vh;
+}
+
+.contenido {
+  display: grid;
+  grid-template-rows: 20% 40%;
+}
+
+form > button,
+input {
+  font-size: 1.5rem;
+}
+
+.card {
+}

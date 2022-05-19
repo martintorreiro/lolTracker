@@ -1,13 +1,26 @@
-export const CardMainBody = ({ userStats }) => {
+export const CardMainBody = ({ summonerData }) => {
   return (
     <>
-      <p>
-        {userStats.tier} {userStats.rank}
-      </p>
-      <p>{userStats.leaguePoints} LPs</p>
-      <p>
-        win rate: {userStats.winRate} ({userStats.wins}/{userStats.losses})
-      </p>
+      <main>
+        <p>
+          <span>{summonerData.tier}</span> {summonerData.rank}{" "}
+          <span>
+            <img
+              className="rank"
+              width="30"
+              height="30"
+              src={`ranked-emblems/${summonerData.tier}.png`}
+              alt="avatar"
+            ></img>
+          </span>
+        </p>
+
+        <p>{summonerData.leaguePoints} LPs</p>
+        <p>
+          win rate: {summonerData.winRate} % ({summonerData.wins}/
+          {summonerData.losses})
+        </p>
+      </main>
     </>
   );
 };
