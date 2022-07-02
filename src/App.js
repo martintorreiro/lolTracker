@@ -1,49 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { Title } from "./components/header";
-import { Search } from "./components/searchSummoner";
-import { Card } from "./components/card";
-import { MatchesList } from "./components/matchesList/matchesList";
+import { SearchSummoner } from "./pages/searchSummoner/searchSummoner";
+import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
+import { Home } from "./pages/home";
 
 function App() {
-  const [summonerData, setSummonerData] = useState("");
-  const [matchesOwnData, setMatchesOwnData] = useState("");
-  const [matchesData, setMatchesData] = useState("");
-
-  const RIOT_KEY = "RGAPI-9aa2feb5-b33f-407c-880c-fdd4ee05e58d";
-
-  console.log(matchesOwnData);
   return (
     <>
-      <Title className="header" title="League of legends" />
+      <Title className="header" title="Riot Tracker" />
+      <BrowserRouter>
+        <div>
+          <header className="navigation_menu">
+            <nav>
+              <Link to="/">Home</Link>
+              <Link to="/LOL">League of legends</Link>
+              <Link to="/TFT">TFT</Link>
+            </nav>
+          </header>
 
-      <main className="contenido">
-        <Search
-          setSummonerData={setSummonerData}
-          setMatchesOwnData={setMatchesOwnData}
-          setMatchesData={setMatchesData}
-          RIOT_KEY={RIOT_KEY}
-        />
-
-        {summonerData ? (
-          <Card className="card" summonerData={summonerData} />
-        ) : (
-          <> </>
-        )}
-
-        {matchesOwnData ? (
-          <ol>
-            {matchesOwnData.map((match) => (
-              <MatchesList
-                matchesOwnData={match}
-                key={match.champExperience}
-              ></MatchesList>
-            ))}
-          </ol>
-        ) : (
-          <></>
-        )}
-      </main>
+          <Routes>
+            <Route path="/" element={<Home className="contenido" />}></Route>
+            <Route
+              path="/LOL"
+              element={<SearchSummoner className="contenido" />}
+            ></Route>
+            <Route
+              path="/TFT"
+              element={<SearchSummoner className="contenido" />}
+            ></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }
