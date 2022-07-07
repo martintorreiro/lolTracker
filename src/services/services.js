@@ -10,7 +10,7 @@ export const getTopByRegion = async (region) => {
     (a, b) => b.leaguePoints - a.leaguePoints
   );
 
-  const top5Players = arrOrder.slice(0, 3);
+  const top5Players = arrOrder.slice(0, 1);
 
   const result = await Promise.all(
     top5Players.map(async (summoner) => {

@@ -1,15 +1,18 @@
 import { useState } from "react";
 
-import { Search } from "../../components/search";
-import { Card } from "../../components/card";
-import { MatchesContainer } from "../../components/matches/matchesContainer";
+import { Search } from "../components/search";
+import { Card } from "../components/card";
+import { MatchesContainer } from "../components/matches/matchesContainer";
+import { TopPlayers } from "../components/topPlayers/topPlayers";
+import { NavLol } from "../components/navLol";
 
-export const SearchSummoner = () => {
+export const LolHome = () => {
   const [summonerData, setSummonerData] = useState("");
   const [matchesData, setMatchesData] = useState("");
 
   return (
-    <>
+    <section>
+      <NavLol></NavLol>
       <Search
         setSummonerData={setSummonerData}
         setMatchesData={setMatchesData}
@@ -29,6 +32,8 @@ export const SearchSummoner = () => {
       ) : (
         <></>
       )}
-    </>
+
+      <TopPlayers></TopPlayers>
+    </section>
   );
 };

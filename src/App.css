@@ -6,23 +6,40 @@
   --modal-bg-color: rgba(20, 17, 46, 0.75);
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
-
+body {
+  overflow-x: hidden;
+}
 #root {
   background-color: var(--main-bg-color);
   color: whitesmoke;
   min-height: 100vh;
+  min-width: 100vw;
+  display: grid;
+  grid-template-rows: 80px auto;
 }
 
-.navigation_menu > nav {
+.navigation_menu > nav > menu {
   background-color: var(--sections-bg-color);
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: 80px;
+}
+.navigation_menu li {
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
 }
 
 .navigation_menu > nav a {
@@ -112,6 +129,24 @@
   max-width: 950px;
 }
 
+.match_defeat {
+  background-image: linear-gradient(
+    to right,
+    rgba(148, 26, 14, 0.4),
+    transparent,
+    transparent
+  );
+}
+
+.match_win {
+  background-image: linear-gradient(
+    to right,
+    rgba(38, 225, 53, 0.3),
+    transparent,
+    transparent
+  );
+}
+
 .match_container:hover {
   cursor: pointer;
   filter: brightness(1.2);
@@ -170,7 +205,7 @@
 }
 
 .match_kda {
-  min-width: 60px;
+  min-width: 70px;
 }
 
 @media (min-width: 650px) {
@@ -206,9 +241,13 @@
 }
 
 .modal_close {
-  position: absolute;
-  top: 0;
+  position: fixed;
   right: 0;
+  top: 0;
+  background-color: red;
+  border-radius: 20%;
+  height: 2rem;
+  width: 2rem;
 }
 
 .modal_close:hover {
@@ -254,3 +293,122 @@
   gap: 0.2rem;
   width: fit-content;
 }
+
+/* ---------------HOME-------------- */
+
+.home {
+  display: grid;
+  grid-template-columns: 600px auto;
+  min-height: 100%;
+  gap: 10px;
+}
+
+.home_hero {
+  padding: 2.4rem;
+  max-width: 100vw;
+}
+
+.home_hero h2 span {
+  color: rgb(222, 50, 50);
+}
+.home_hero section {
+  padding: 3rem 0.4rem;
+}
+.home_hero section span {
+  font-family: "Oswald", sans-serif;
+  font-size: 4.2rem;
+  line-height: 6rem;
+}
+.home_hero span:nth-child(2n) {
+  color: rgb(222, 50, 50);
+}
+
+.home_games {
+  padding: 2.4rem;
+  position: relative;
+}
+
+.home_games h2:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url("./assets/images/grieta-invocador.webp");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+.home_games img {
+  height: 250px;
+  width: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid gold;
+  overflow: hidden;
+}
+
+.home_games ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home_games li {
+  font-size: 2rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.home_games li:hover {
+  background-color: rgba(23, 18, 32, 0.65);
+}
+.home_games a {
+  color: white;
+  text-decoration: none;
+}
+
+.home_games p {
+  padding: 15px;
+}
+
+.home_games .front_page {
+  height: 250px;
+  width: 180px;
+}
+
+@media (max-width: 1080px) {
+  .home {
+    grid-template-columns: none;
+    grid-template-rows: auto auto;
+  }
+  .home_hero section {
+    padding: 1.6rem 0;
+  }
+  .home_hero section span {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  .home_games p {
+    font-size: 1.6rem;
+  }
+  .navigation_menu img {
+    height: 25px;
+  }
+  .navigation_menu > nav > menu {
+    height: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home_games li {
+    flex-direction: column;
+  }
+} ;

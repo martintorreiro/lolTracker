@@ -1,1 +1,1 @@
-export const CardSummoner = (summonerData) => {};
+export const CardTopRegion = (summonerData) => {};
