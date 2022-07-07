@@ -17,8 +17,8 @@ export const MatchesSummonersList = ({ summonerList }) => {
           return (
             <li key={Math.round(Math.random() * 1000000)}>
               <img
-                src={`http://ddragon.leagueoflegends.com/cdn/12.9.1/img/champion/${summoner.championName}.png`}
-                alt="profile icon"
+                src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/${summoner.championName}.png`}
+                alt={summoner.championName}
                 style={{ width: "25px", height: "25px" }}
               ></img>
             </li>
@@ -34,8 +34,8 @@ export const MatchesSummonersList = ({ summonerList }) => {
           return (
             <li key={Math.round(Math.random() * 1000000)}>
               <img
-                src={`http://ddragon.leagueoflegends.com/cdn/12.9.1/img/champion/${summoner.championName}.png`}
-                alt="profile icon"
+                src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/${summoner.championName}.png`}
+                alt={summoner.championName}
                 style={{ width: "25px", height: "25px" }}
               ></img>
             </li>

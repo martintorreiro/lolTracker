@@ -1,36 +1,23 @@
 import React from "react";
 import "./App.css";
 import { Title } from "./components/header";
-import { SearchSummoner } from "./pages/searchSummoner/searchSummoner";
+import { LolHome } from "./pages/lol-home";
 import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
 import { Home } from "./pages/home";
+import { TftHome } from "./pages/ftf-home";
+import { ValHome } from "./pages/val-home";
 
 function App() {
   return (
     <>
-      <Title className="header" title="Riot Tracker" />
       <BrowserRouter>
-        <div>
-          <header className="navigation_menu">
-            <nav>
-              <Link to="/">Home</Link>
-              <Link to="/LOL">League of legends</Link>
-              <Link to="/TFT">TFT</Link>
-            </nav>
-          </header>
-
-          <Routes>
-            <Route path="/" element={<Home className="contenido" />}></Route>
-            <Route
-              path="/LOL"
-              element={<SearchSummoner className="contenido" />}
-            ></Route>
-            <Route
-              path="/TFT"
-              element={<SearchSummoner className="contenido" />}
-            ></Route>
-          </Routes>
-        </div>
+        <Title></Title>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/LOL" element={<LolHome />}></Route>
+          <Route path="/TFT" element={<TftHome />}></Route>
+          <Route path="/VAL" element={<ValHome />}></Route>
+        </Routes>
       </BrowserRouter>
     </>
   );

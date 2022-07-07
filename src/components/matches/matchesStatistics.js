@@ -5,7 +5,7 @@ export const MatchesStatistics = ({ ownData, gameDate }) => {
 
       <p>{ownData.role}</p>
 
-      <p>{ownData.win ? "victory" : "defeat"}</p>
+      <p>{ownData.win ? "VICTORY" : "DEFEAT"}</p>
     </div>
   );
 };

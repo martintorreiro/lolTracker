@@ -9,12 +9,15 @@ import { OpenMatchModal } from "./openMatchModal/openMatchModal";
 
 export const MatchesList = ({ ownData, gameDate, match }) => {
   const { isOpen, openModal, closeModal } = useModal();
-  console.log("---", match);
+  console.log("---", ownData);
   return (
     <>
       <li
+        /* { ownData.win ? className="match_win" : className="match_defeat"} */
         key={Math.round(Math.random() * 1000000)} ///////////////////////////////sustitir por uuid
-        className="match_container"
+        className={`match_container ${
+          ownData.win ? "match_win" : "match_defeat"
+        }`}
         onClick={openModal}
       >
         <MatchesStatistics

@@ -1,5 +1,4 @@
 export const Card = ({ summonerData }) => {
-  console.log("..", summonerData);
   return (
     <article className="card">
       <header>
