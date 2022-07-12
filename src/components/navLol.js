@@ -1,12 +1,20 @@
+import { Link } from "react-router-dom";
+
 export const NavLol = () => {
   return (
     <header>
       <nav>
-        <menu className="nav_lol">
-          <li>Home</li>
-          <li>Leaderboard</li>
-          <li>Champions</li>
-        </menu>
+        <ul className="nav_lol">
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/">
+            <li>Leaderboard</li>
+          </Link>
+          <Link to="/">
+            <li>Champions</li>
+          </Link>
+        </ul>
       </nav>
     </header>
   );

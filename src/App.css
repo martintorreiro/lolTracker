@@ -16,6 +16,7 @@
 body {
   overflow-x: hidden;
 }
+
 #root {
   background-color: var(--main-bg-color);
   color: whitesmoke;
@@ -47,13 +48,42 @@ body {
   text-decoration: none;
 }
 
-/* ------------search------------ */
+/* -------------LOL PAGE----------- */
+
+.nav_lol {
+  display: flex;
+  gap: 1rem;
+}
+.nav_lol a {
+  text-decoration: none;
+  padding: 1rem;
+  color: white;
+}
+/* .nav_lol li {
+  padding: 1rem;
+} */
 
 .search {
-  height: 30px;
   display: flex;
   justify-content: center;
   margin: 1rem 0;
+}
+
+.search input {
+  height: 40px;
+  width: 200px;
+  padding-left: 10px;
+}
+
+.search button {
+  height: 40px;
+  width: 40px;
+  border-radius: 0 10px 10px 0;
+}
+
+.search select {
+  height: 40px;
+  border-radius: 10px 0 0 10px;
 }
 
 /* -------------card-------------- */

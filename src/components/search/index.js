@@ -1,35 +1,26 @@
-import {
-  lastMatchesService,
-  profileDataService,
-} from "../../services/services";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
-export const Search = ({
-  setSummonerData,
-  setMatchesOwnData,
-  setMatchesData,
-}) => {
+export const Search = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
-    try {
-      event.preventDefault();
-      const searchText = event.target.elements.search.value;
-
-      const profileData = await profileDataService(searchText);
-
-      const lastMatches = await lastMatchesService(profileData.puuid);
-
-      setSummonerData(profileData);
-      setMatchesData(lastMatches);
-    } catch (error) {
-      console.log(error.message);
-      return <p>{error.message}</p>;
-    }
+    event.preventDefault();
+    const searchText = event.target.elements.search.value;
+    navigate(`/LOL/user-profile/${searchText}`);
   };
 
   return (
     <form onSubmit={handleSubmit} className="search">
-      <input autoFocus type="search" id="search" name="sarch"></input>
-      <button type="submit">ok</button>
+      <select name="select">
+        <option value="EUW" selected>
+          EUW
+        </option>
+        <option value="NA">NA</option>
+        <option value="KOR">KOR</option>
+      </select>
+      <input type="search" id="search" name="sarch"></input>
+      <button type="submit">OK</button>
     </form>
   );
 };

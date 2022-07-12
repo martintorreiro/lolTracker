@@ -1,8 +1,8 @@
 /* import { SearchSummoner } from "./lol-home";
 import { TopPlayers } from "../components/topPlayers/topPlayers"; */
-import frontPageLol from "../assets/images/portada-lol.png";
-import frontPageTft from "../assets/images/portada-tft.png";
-import frontPageVal from "../assets/images/portada-val.jpg";
+import frontPageLol from "../assets/images/portada-lol.webp";
+import frontPageTft from "../assets/images/portada-tft.webp";
+import frontPageVal from "../assets/images/portada-val.webp";
 import { Link } from "react-router-dom";
 export const Home = () => {
   return (

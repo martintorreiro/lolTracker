@@ -36,6 +36,8 @@ export const OpenMatchPlayers = ({ participants }) => {
                 ></MatchesItems>
               </li>
             );
+          } else {
+            return <></>;
           }
         })}
       </ul>
@@ -69,6 +71,8 @@ export const OpenMatchPlayers = ({ participants }) => {
                 ></MatchesItems>
               </li>
             );
+          } else {
+            return <></>;
           }
         })}
       </ul>

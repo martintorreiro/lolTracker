@@ -9,11 +9,10 @@ import { OpenMatchModal } from "./openMatchModal/openMatchModal";
 
 export const MatchesList = ({ ownData, gameDate, match }) => {
   const { isOpen, openModal, closeModal } = useModal();
-  console.log("---", ownData);
+
   return (
     <>
       <li
-        /* { ownData.win ? className="match_win" : className="match_defeat"} */
         key={Math.round(Math.random() * 1000000)} ///////////////////////////////sustitir por uuid
         className={`match_container ${
           ownData.win ? "match_win" : "match_defeat"
@@ -26,7 +25,7 @@ export const MatchesList = ({ ownData, gameDate, match }) => {
         ></MatchesStatistics>
         <div className="match_body">
           <img
-            src={`http://ddragon.leagueoflegends.com/cdn/12.9.1/img/champion/${ownData.championName}.png`}
+            src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/${ownData.championName}.png`}
             alt="champ-avatar"
             height="60px"
           ></img>

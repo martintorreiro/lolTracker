@@ -55,7 +55,7 @@ export const profileDataService = async (searchText, region = "euw1") => {
 
 export const lastMatchesService = async (puuid) => {
   let responseMatches = await fetch(
-    `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?api_key=${RIOT_KEY}&count=15`
+    `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?api_key=${RIOT_KEY}&count=10`
   );
 
   responseMatches = await responseMatches.json();
@@ -65,7 +65,7 @@ export const lastMatchesService = async (puuid) => {
       const res = await fetch(
         `https://europe.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${RIOT_KEY}`
       );
-
+      console.log("aqui");
       return await res.json();
     })
   );
