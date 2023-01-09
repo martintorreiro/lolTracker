@@ -12,10 +12,8 @@ export const Search = () => {
 
   return (
     <form onSubmit={handleSubmit} className="search">
-      <select name="select">
-        <option value="EUW" selected>
-          EUW
-        </option>
+      <select name="select" defaultValue="EUW">
+        <option value="EUW">EUW</option>
         <option value="NA">NA</option>
         <option value="KOR">KOR</option>
       </select>

@@ -16,6 +16,7 @@ export const useGetTopFiveRegion = (region = "euw1") => {
         setTopListEU(topListEuwServ);
         setTopListNA(topListNaServ);
       } catch (error) {
+        console.log(error);
         setError(error.message);
       } finally {
         setLoading(false);

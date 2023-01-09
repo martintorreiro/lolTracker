@@ -11,7 +11,7 @@ export const getTopByRegion = async (region) => {
   );
 
   const top5Players = arrOrder.slice(0, 1);
-
+  console.log(top5Players);
   const result = await Promise.all(
     top5Players.map(async (summoner) => {
       const res = await profileDataService(summoner.summonerName, region);

@@ -1,11 +1,11 @@
-/* import { useGetTopFiveRegion } from "../../hook/useGetTopFiveRegion";
-import { Card } from "../card"; */
+import { useGetTopFiveRegion } from "../../hook/useGetTopFiveRegion";
+import { Card } from "../card";
 
 export const TopPlayers = () => {
-  /* const { topListEU, topListNA, loading, error } = useGetTopFiveRegion();
+  const { topListEU, topListNA, loading, error } = useGetTopFiveRegion();
   if (loading) return <p>Loading / Cargando</p>;
 
-  if (error) return <p>{error}</p>; */
+  if (error) return <p>{error}</p>;
 
   return (
     <ul>
@@ -13,7 +13,7 @@ export const TopPlayers = () => {
       <li>EU West</li>
       <li>Korea</li>
 
-      {/*    <ol>
+      {/*  <ol>
         {topListEU.map((summoner) => (
           <li key={summoner.id}>
             <Card summonerData={summoner}></Card>
@@ -21,7 +21,6 @@ export const TopPlayers = () => {
         ))}
       </ol>
       <ol>
-        {" "}
         {topListNA.map((summoner) => (
           <li key={summoner.id}>
             <Card summonerData={summoner}></Card>
